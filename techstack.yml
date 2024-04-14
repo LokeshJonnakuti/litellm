@@ -1,0 +1,574 @@
+repo_name: LokeshJonnakuti/litellm
+report_id: 8974e0348125c6c96c3a7f27be775961
+version: 0.1
+repo_type: Public
+timestamp: '2024-04-14T10:55:43+00:00'
+requested_by: krrishdholakia
+provider: github
+branch: main
+detected_tools_count: 41
+tools:
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/docs/my-website/package.json
+  detection_source: docs/my-website/package.json
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-08-12 18:30:32.000000000 Z
+- name: Python
+  description: A clear and powerful object-oriented programming language, comparable
+    to Perl, Ruby, Scheme, or Java.
+  website_url: https://www.python.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/993/pUBY5pVj.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm
+  detection_source: Repo Metadata
+- name: FastAPI
+  description: A high performance, easy to learn, fast to code, ready for production
+    web framework
+  website_url: https://fastapi.tiangolo.com/
+  version: 0.104.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Microframeworks (Backend)
+  image_url: https://img.stackshare.io/service/25014/default_f6ff39141b468e832d1bc59fc98a060df604d44d.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/pyproject.toml
+  detection_source: litellm/requirements.txt
+  last_updated_by: David Manouchehri
+  last_updated_on: 2023-11-23 04:07:33.000000000 Z
+- name: React
+  description: A JavaScript library for building user interfaces
+  website_url: https://reactjs.org/
+  version: 16.14.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript UI Libraries
+  image_url: https://img.stackshare.io/service/1020/OYIaJ1KK.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/docs/my-website/package-lock.json
+  detection_source: docs/my-website/package.json
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-08-21 14:47:03.000000000 Z
+- name: Redis
+  description: Open source (BSD licensed), in-memory data structure store
+  website_url: http://redis.io/
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: In-Memory Databases
+  image_url: https://img.stackshare.io/service/1031/default_cbce472cd134adc6688572f999e9122b9657d4ba.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/.circleci/requirements.txt
+  detection_source: ".circleci/requirements.txt"
+  last_updated_by: ishaan-jaff
+  last_updated_on: 2023-09-11 15:01:00.000000000 Z
+- name: Babel
+  description: Use next generation JavaScript, today.
+  website_url: http://babeljs.io/
+  version: 7.22.10
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: JavaScript Compilers
+  image_url: https://img.stackshare.io/service/2739/-1wfGjNw.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/docs/my-website/package-lock.json
+  detection_source: docs/my-website/babel.config.js
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-08-12 18:30:32.000000000 Z
+- name: CircleCI
+  description: Automate your development process quickly, safely, and at scale
+  website_url: https://circleci.com/
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Continuous Integration
+  image_url: https://img.stackshare.io/service/190/CvqrSSFs_400x400.jpg
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/.circleci/config.yml
+  detection_source: ".circleci/config.yml"
+  last_updated_by: Krish Dholakia
+  last_updated_on: 2023-10-09 20:40:20.000000000 Z
+- name: Docker
+  description: Enterprise Container Platform for High-Velocity Innovation.
+  website_url: https://www.docker.com/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Virtual Machine Platforms & Containers
+  image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm
+  detection_source: Repo Metadata
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm
+  detection_source: Repo Metadata
+- name: GitHub Actions
+  description: Automate your workflow from idea to production
+  website_url: https://github.com/features/actions
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Continuous Integration
+  image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/.github/workflows/docker.yml
+  detection_source: ".github/workflows/docker.yml"
+  last_updated_by: Ishaan Jaff
+  last_updated_on: 2023-12-02 23:54:01.000000000 Z
+- name: PyPI
+  description: A repository of software for the Python programming language
+  website_url: https://pypi.org/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Hosted Package Repository
+  image_url: https://img.stackshare.io/service/12572/-RIWgodF_400x400.jpg
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/pyproject.toml
+  detection_source: pyproject.toml
+  last_updated_by: Zakhar Kogan
+  last_updated_on: 2023-08-02 09:05:35.000000000 Z
+- name: Yarn
+  description: A new package manager for JavaScript
+  website_url: https://yarnpkg.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/5848/44mC-kJ3.jpg
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/docs/my-website/yarn.lock
+  detection_source: docs/my-website/yarn.lock
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-08-21 14:47:03.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/docs/my-website/package.json
+  detection_source: docs/my-website/package.json
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-08-12 18:30:32.000000000 Z
+- name: Claude
+  description: A next-generation AI assistant for your tasks, no matter the scale
+  website_url: https://www.anthropic.com/product
+  open_source: false
+  hosted_saas: false
+  category: Communications
+  sub_category: Large Language Models
+  image_url: https://img.stackshare.io/service/101883/default_fddf1fbe1d52baf4dac573b2b7fc24b78cc729b1.jpg
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/.circleci/requirements.txt
+  detection_source: ".circleci/requirements.txt"
+  last_updated_by: ishaan-jaff
+  last_updated_on: 2023-08-10 20:19:48.000000000 Z
+- name: Cohere.com
+  description: Add cutting-edge language processing to any system
+  website_url: https://cohere.com/
+  open_source: false
+  hosted_saas: false
+  category: Communications
+  sub_category: Large Language Models
+  image_url: https://img.stackshare.io/service/101884/default_cf6d4a823cb5b37940800efc1e952b6a6c74e32a.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/.circleci/requirements.txt
+  detection_source: ".circleci/requirements.txt"
+  last_updated_by: ishaan-jaff
+  last_updated_on: 2023-09-05 22:33:49.000000000 Z
+- name: Docusaurus
+  description: Easy to maintain open source documentation websites
+  website_url: https://docusaurus.io/
+  version: 1.14.7
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Application Utilities
+  sub_category: Documentation as a Service & Tools
+  image_url: https://img.stackshare.io/service/8438/xyht_7gq_400x400.jpg
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/docs/my-website/package-lock.json
+  detection_source: docs/my-website/package.json
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-12-07 19:27:37.000000000 Z
+- name: OpenAI
+  description: Creating safe AGI that benefits all
+  website_url: https://openai.com/
+  version: 0.28.1
+  open_source: false
+  hosted_saas: false
+  category: Communications
+  sub_category: Large Language Models
+  image_url: https://img.stackshare.io/service/48786/default_8b1119bcbb159cebebc2f6cfc9cd2e359b169d22.jpg
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/poetry.lock
+  detection_source: ".circleci/requirements.txt"
+  last_updated_by: ishaan-jaff
+  last_updated_on: 2023-08-10 20:19:48.000000000 Z
+- name: Shell
+  description: A shell is a text-based terminal, used for manipulating programs and
+    files. Shell scripts typically manage program execution.
+  website_url: https://en.wikipedia.org/wiki/Shell_script
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm
+  detection_source: Repo Metadata
+- name: aiohttp
+  description: Async http client/server framework
+  package_url: https://pypi.org/project/aiohttp
+  version: 3.8.6
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19852/default_d748224707283d9d8a73c2323730c87bda6b313a.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-11-09 18:40:26.000000000 Z
+  vulnerabilities:
+  - name: aiohttp's ClientSession is vulnerable to CRLF injection via version
+    cve_id: CVE-2023-49081
+    cve_url: https://github.com/advisories/GHSA-q3qx-c6g2-7pw2
+    detected_date: Nov 28
+    severity: high
+    first_patched: 3.9.0
+  - name: aiohttp is vulnerable to directory traversal
+    cve_id: CVE-2024-23334
+    cve_url: https://github.com/advisories/GHSA-5h86-8mv2-jq9f
+    detected_date: Jan 30
+    severity: moderate
+    first_patched: 3.9.2
+  - name: aiohttp's ClientSession is vulnerable to CRLF injection via method
+    cve_id: CVE-2023-49082
+    cve_url: https://github.com/advisories/GHSA-qvrw-v9rv-5rjx
+    detected_date: Nov 28
+    severity: moderate
+    first_patched: 3.9.0
+  - name: aiohttp's HTTP parser (the python one, not llhttp) still overly lenient
+      about separators
+    cve_id: CVE-2024-23829
+    cve_url: https://github.com/advisories/GHSA-8qpw-xqxj-h4r2
+    detected_date: Jan 30
+    severity: moderate
+    first_patched: 3.9.2
+- name: anthropic
+  description: The official Python library for the anthropic API
+  package_url: https://pypi.org/project/anthropic
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/.circleci/requirements.txt
+  detection_source: ".circleci/requirements.txt"
+  last_updated_by: ishaan-jaff
+  last_updated_on: 2023-09-05 22:33:49.000000000 Z
+- name: appdirs
+  description: A small Python module for determining appropriate platform-specific
+    dirs, e.g
+  package_url: https://pypi.org/project/appdirs
+  version: 1.4.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19878/default_2270bfab784e3d2c2d999d26b11ee478a9dad238.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/poetry.lock
+  detection_source: ".circleci/requirements.txt"
+  last_updated_by: ishaan-jaff
+  last_updated_on: 2023-12-01 04:18:18.000000000 Z
+- name: async_generator
+  description: Async generators and context managers for Python 3.5+
+  package_url: https://pypi.org/project/async_generator
+  license: MIT,Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/litellm/requirements.txt
+  detection_source: litellm/requirements.txt
+  last_updated_by: David Manouchehri
+  last_updated_on: 2023-11-23 04:07:33.000000000 Z
+- name: backoff
+  description: Function decoration for backoff and retry
+  package_url: https://pypi.org/project/backoff
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19988/default_aa331bbc48e2faa54aa26e08880b772595f833b8.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/litellm/requirements.txt
+  detection_source: litellm/requirements.txt
+  last_updated_by: David Manouchehri
+  last_updated_on: 2023-11-23 04:07:33.000000000 Z
+- name: boto3
+  description: The AWS SDK for Python
+  package_url: https://pypi.org/project/boto3
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19840/default_1c41e593803157c668b26f27387160254f0f5371.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/.circleci/requirements.txt
+  detection_source: ".circleci/requirements.txt"
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-10-01 01:17:04.000000000 Z
+- name: celery
+  description: Distributed Task Queue
+  package_url: https://pypi.org/project/celery
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19901/default_4f4fb10b6f169603a907dcb35a5a356d784e3bd3.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/litellm/requirements.txt
+  detection_source: litellm/requirements.txt
+  last_updated_by: David Manouchehri
+  last_updated_on: 2023-11-23 04:07:33.000000000 Z
+- name: certifi
+  description: Python package for providing Mozilla's CA Bundle
+  package_url: https://pypi.org/project/certifi
+  version: 2023.7.22
+  license: MPL-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19849/default_75c38a39b9f0062814489e2ec2cbfca0ca15d9ba.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-10-10 20:22:27.000000000 Z
+- name: click
+  description: Composable command line interface toolkit
+  package_url: https://pypi.org/project/click
+  version: 8.1.7
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19830/default_74a61b43bdb9fc0cba2978316b9976f43545029b.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-09-26 20:30:35.000000000 Z
+- name: cohere
+  description: Python SDK for the Cohere API
+  package_url: https://pypi.org/project/cohere
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/.circleci/requirements.txt
+  detection_source: ".circleci/requirements.txt"
+  last_updated_by: ishaan-jaff
+  last_updated_on: 2023-09-05 22:33:49.000000000 Z
+- name: importlib-metadata
+  description: Read metadata from Python packages
+  package_url: https://pypi.org/project/importlib-metadata
+  version: 6.8.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20000/default_7c419d5d5f0cfad7886b95266eae7ba305cedacf.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/poetry.lock
+  detection_source: pyproject.toml
+  last_updated_by: ishaan-jaff
+  last_updated_on: 2023-12-04 17:09:54.000000000 Z
+- name: openai
+  description: The official Python library for the openai API
+  package_url: https://pypi.org/project/openai
+  version: 0.28.1
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/poetry.lock
+  detection_source: ".circleci/requirements.txt"
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-11-12 03:13:59.000000000 Z
+- name: psutil
+  description: Cross-platform lib for process and system monitoring in Python
+  package_url: https://pypi.org/project/psutil
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/19851/default_ac77a75c05474acf9389d56b1f5cc8241af4c384.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/litellm/requirements.txt
+  detection_source: litellm/requirements.txt
+  last_updated_by: David Manouchehri
+  last_updated_on: 2023-11-23 04:07:33.000000000 Z
+- name: pydantic
+  description: Data validation and settings management using python 3.6 type hinting
+  package_url: https://pypi.org/project/pydantic
+  version: '2.5'
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20022/default_b0d1a54f127d7017fce41c15f5e85568fb7019ed.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/litellm/requirements.txt
+  detection_source: ".circleci/requirements.txt"
+  last_updated_by: ishaan-jaff
+  last_updated_on: 2023-12-07 18:21:09.000000000 Z
+- name: python-dotenv
+  description: Add .env support to your django/flask apps in development and deployments
+  package_url: https://pypi.org/project/python-dotenv
+  version: 1.0.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20095/default_3141eabecdd8efa55de73a33c43f2ac0d5bbf954.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/poetry.lock
+  detection_source: ".circleci/requirements.txt"
+  last_updated_by: ishaan-jaff
+  last_updated_on: 2023-08-10 20:19:48.000000000 Z
+- name: rq
+  description: RQ is a simple
+  package_url: https://pypi.org/project/rq
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20393/default_ec7f908dc4ac3533950df7d8e371292c0bdc3812.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/litellm/requirements.txt
+  detection_source: litellm/requirements.txt
+  last_updated_by: David Manouchehri
+  last_updated_on: 2023-11-23 04:07:33.000000000 Z
+- name: tomli
+  description: A lil' TOML parser
+  package_url: https://pypi.org/project/tomli
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/pypi/image.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/litellm/requirements.txt
+  detection_source: litellm/requirements.txt
+  last_updated_by: David Manouchehri
+  last_updated_on: 2023-11-23 04:07:33.000000000 Z
+- name: uvicorn
+  description: The lightning-fast ASGI server
+  package_url: https://pypi.org/project/uvicorn
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: PyPI Packages
+  image_url: https://img.stackshare.io/package/20431/default_f824837db22536768ec317b67275fa384fad7d47.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/litellm/requirements.txt
+  detection_source: litellm/requirements.txt
+  last_updated_by: David Manouchehri
+  last_updated_on: 2023-11-23 04:07:33.000000000 Z
+- name: sharp
+  description: High performance Node.js image processing
+  package_url: https://www.npmjs.com/sharp
+  version: 0.30.7
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16806/default_31a4e0e11d348225088320f3a5c5ea6fa49c27ad.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/docs/my-website/package-lock.json
+  detection_source: docs/my-website/package.json
+  last_updated_by: dependabot[bot]
+  last_updated_on: 2023-11-16 18:59:28.000000000 Z
+  vulnerabilities:
+  - name: sharp vulnerability in libwebp dependency CVE-2023-4863
+    cve_id:
+    cve_url: https://github.com/advisories/GHSA-54xq-cgqr-rpm3
+    detected_date: Nov 17
+    severity: high
+    first_patched: 0.32.6
+- name: "@mdx-js/react"
+  description: React implementation for MDX
+  package_url: https://www.npmjs.com/@mdx-js/react
+  version: 1.6.22
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17624/default_61a119a7701a0e8224ca0e4dce7ff951cd67972f.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/docs/my-website/package-lock.json
+  detection_source: docs/my-website/package.json
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-08-21 14:47:03.000000000 Z
+- name: react-dom
+  description: React package for working with the DOM
+  package_url: https://www.npmjs.com/react-dom
+  version: 16.14.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15808/default_14fd11531839d935f920b6d55bd6f3528c890ad7.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/docs/my-website/package-lock.json
+  detection_source: docs/my-website/package.json
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-08-21 14:47:03.000000000 Z
+- name: uuid
+  description: RFC4122
+  package_url: https://www.npmjs.com/uuid
+  version: 3.4.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15916/default_e0a4fb1126d7400f419f0931cf1669947a5bc552.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/docs/my-website/package-lock.json
+  detection_source: docs/my-website/package.json
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-09-18 21:08:05.000000000 Z
+- name: mistralai/Mistral-7B-Instruct-v0.1
+  description: Mistralai/Mistral 7B Instruct v0.1
+  package_url: https://huggingface.co/spaces/mistralai/Mistral-7B-Instruct-v0.1
+  license: apache-2.0
+  open_source: false
+  hosted_saas: false
+  category: Libraries
+  sub_category: AI Hub
+  image_url: https://img.stackshare.io/package/hugging-face-hub/image.png
+  detection_source_url: https://github.com/LokeshJonnakuti/litellm/blob/main/litellm/utils.py
+  detection_source: litellm/utils.py
+  last_updated_by: Krrish Dholakia
+  last_updated_on: 2023-12-03 05:33:47.000000000 Z
