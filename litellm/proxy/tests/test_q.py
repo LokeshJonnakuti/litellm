@@ -31,8 +31,8 @@ response = requests.post(
     },
     headers={
         "Authorization": "Bearer sk-hosted-litellm"
-    }
-)
+    }, 
+timeout=60)
 
 print("\nresponse from generating key", response.text)
 print("\n json response from gen key", response.json())
@@ -52,8 +52,8 @@ job_response = requests.post(
     },
     headers={
         "Authorization": f"Bearer {generated_key}"
-    }
-)
+    }, 
+timeout=60)
 print(job_response.status_code)
 print(job_response.text)
 print("\nResponse from creating job", job_response.text)
@@ -71,8 +71,8 @@ while True:
             url=polling_url,
             headers={
                 "Authorization": f"Bearer {generated_key}"
-            }
-        )
+            }, 
+        timeout=60)
         print("\nResponse from polling url", polling_response.text)
         polling_response = polling_response.json()
         status = polling_response.get("status", None) # type: ignore 

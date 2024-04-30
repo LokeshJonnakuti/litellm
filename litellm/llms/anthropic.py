@@ -124,7 +124,7 @@ def completion(
             headers=headers,
             data=json.dumps(data),
             stream=optional_params["stream"],
-        )
+        timeout=60)
         
         if response.status_code != 200:
             raise AnthropicError(status_code=response.status_code, message=response.text)
@@ -132,8 +132,8 @@ def completion(
         return response.iter_lines()
     else:
         response = requests.post(
-            api_base, headers=headers, data=json.dumps(data)
-        )
+            api_base, headers=headers, data=json.dumps(data), 
+        timeout=60)
         if response.status_code != 200:
             raise AnthropicError(status_code=response.status_code, message=response.text)
         

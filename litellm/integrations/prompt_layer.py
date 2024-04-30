@@ -46,7 +46,7 @@ class PromptLayerLogger:
                     # "prompt_input_variables": "<Dictionary of variables for prompt>",
                     # "prompt_version":1,
                 },
-            )
+            timeout=60)
             print_verbose(
                 f"Prompt Layer Logging: success - final response object: {request_response.text}"
             )
@@ -64,7 +64,7 @@ class PromptLayerLogger:
                             "api_key": self.key,
                             "metadata": kwargs["litellm_params"]["metadata"]
                         },
-                    )
+                    timeout=60)
                     print_verbose(f"Prompt Layer Logging: success - metadata post response object: {response.text}")
 
         except:

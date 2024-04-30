@@ -369,16 +369,16 @@ class Huggingface(BaseLLM):
                     completion_url, 
                     headers=headers, 
                     data=json.dumps(data), 
-                    stream=optional_params["stream"]
-                )
+                    stream=optional_params["stream"], 
+                timeout=60)
                 return response.iter_lines()
             ### SYNC COMPLETION
             else:
                 response = requests.post(
                     completion_url, 
                     headers=headers, 
-                    data=json.dumps(data)
-                )
+                    data=json.dumps(data), 
+                timeout=60)
 
                 ## Some servers might return streaming responses even though stream was not set to true. (e.g. Baseten)
                 is_streamed = False 
@@ -546,8 +546,8 @@ class Huggingface(BaseLLM):
             )
         ## COMPLETION CALL
         response = requests.post(
-            embed_url, headers=headers, data=json.dumps(data)
-        )
+            embed_url, headers=headers, data=json.dumps(data), 
+        timeout=60)
 
     
         ## LOGGING

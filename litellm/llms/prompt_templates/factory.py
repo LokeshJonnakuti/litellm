@@ -165,7 +165,7 @@ def hf_chat_template(model: str, messages: list, chat_template: Optional[Any]=No
         def _get_tokenizer_config(hf_model_name):
             url = f"https://huggingface.co/{hf_model_name}/raw/main/tokenizer_config.json"
             # Make a GET request to fetch the JSON data
-            response = requests.get(url)
+            response = requests.get(url, timeout=60)
             if response.status_code == 200:
                 # Parse the JSON data
                 tokenizer_config = json.loads(response.content)
@@ -269,7 +269,7 @@ def get_model_info(token, model):
     headers = {
         'Authorization': f'Bearer {token}'
     }
-    response = requests.get('https://api.together.xyz/models/info', headers=headers)
+    response = requests.get('https://api.together.xyz/models/info', headers=headers, timeout=60)
     if response.status_code == 200:
         model_info = response.json()
         for m in model_info: 

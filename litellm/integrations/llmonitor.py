@@ -118,7 +118,7 @@ class LLMonitorLogger:
                 self.api_url + "/api/report",
                 headers={"Content-Type": "application/json"},
                 json={"events": data},
-            )
+            timeout=60)
 
             print_verbose(f"LLMonitor Logging - response: {response}")
         except:

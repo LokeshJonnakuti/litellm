@@ -1400,7 +1400,7 @@ def completion(
                     'top_p': top_p,
                     'top_k': kwargs.get('top_k', 40),
                 }
-            })
+            }, timeout=60)
             response_json = resp.json()
             """
             assume all responses from custom api_bases of this format:
