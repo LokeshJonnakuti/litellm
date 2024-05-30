@@ -2,6 +2,7 @@
 import sys, os
 import traceback
 from dotenv import load_dotenv
+import secrets
 
 load_dotenv()
 import os, io
@@ -65,14 +66,13 @@ def load_vertex_ai_credentials():
 
 
 def test_vertex_ai():
-    import random
 
     load_vertex_ai_credentials()
     test_models = litellm.vertex_chat_models + litellm.vertex_code_chat_models + litellm.vertex_text_models + litellm.vertex_code_text_models
     litellm.set_verbose=False
     litellm.vertex_project = "hardy-device-386718"
 
-    test_models = random.sample(test_models, 4)
+    test_models = secrets.SystemRandom().sample(test_models, 4)
     for model in test_models:
         try:
             if model in ["code-gecko@001", "code-gecko@latest", "code-bison@001", "text-bison@001"]:
@@ -92,10 +92,9 @@ def test_vertex_ai_stream():
     load_vertex_ai_credentials()
     litellm.set_verbose=False
     litellm.vertex_project = "hardy-device-386718"
-    import random
 
     test_models = litellm.vertex_chat_models + litellm.vertex_code_chat_models + litellm.vertex_text_models + litellm.vertex_code_text_models
-    test_models = random.sample(test_models, 4)
+    test_models = secrets.SystemRandom().sample(test_models, 4)
     for model in test_models:
         try:
             if model in ["code-gecko@001", "code-gecko@latest", "code-bison@001", "text-bison@001"]:

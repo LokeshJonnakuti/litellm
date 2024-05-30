@@ -2,6 +2,7 @@ import sys, os
 import time
 import traceback
 from dotenv import load_dotenv
+import secrets
 
 load_dotenv()
 import os
@@ -13,18 +14,14 @@ import pytest
 import litellm
 from litellm import embedding, completion
 from litellm.caching import Cache
-import random
 # litellm.set_verbose=True
 
 messages = [{"role": "user", "content": "who is ishaan Github?  "}]
-# comment
-
-import random
 import string
 
 def generate_random_word(length=4):
     letters = string.ascii_lowercase
-    return ''.join(random.choice(letters) for _ in range(length))
+    return ''.join(secrets.choice(letters) for _ in range(length))
 
 messages = [{"role": "user", "content": "who is ishaan 5222"}]
 def test_caching_v2(): # test in memory cache
@@ -161,7 +158,7 @@ def test_embedding_caching_azure():
 def test_redis_cache_completion():
     litellm.set_verbose = False
 
-    random_number = random.randint(1, 100000) # add a random number to ensure it's always adding / reading from cache
+    random_number = secrets.SystemRandom().randint(1, 100000) # add a random number to ensure it's always adding / reading from cache
     messages = [{"role": "user", "content": f"write a one sentence poem about: {random_number}"}]
     litellm.cache = Cache(type="redis", host=os.environ['REDIS_HOST'], port=os.environ['REDIS_PORT'], password=os.environ['REDIS_PASSWORD'])
     print("test2 for caching")
@@ -205,7 +202,7 @@ def test_redis_cache_completion_stream():
         litellm._async_success_callback = []
         litellm.callbacks = []
         litellm.set_verbose = True
-        random_number = random.randint(1, 100000) # add a random number to ensure it's always adding / reading from cache
+        random_number = secrets.SystemRandom().randint(1, 100000) # add a random number to ensure it's always adding / reading from cache
         messages = [{"role": "user", "content": f"write a one sentence poem about: {random_number}"}]
         litellm.cache = Cache(type="redis", host=os.environ['REDIS_HOST'], port=os.environ['REDIS_PORT'], password=os.environ['REDIS_PASSWORD'])
         print("test for caching, streaming + completion")

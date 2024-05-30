@@ -9,7 +9,7 @@
 
 from datetime import datetime
 from typing import Dict, List, Optional, Union, Literal, Any
-import random, threading, time, traceback, uuid
+import threading, time, traceback, uuid
 import litellm, openai
 from litellm.caching import RedisCache, InMemoryCache, DualCache
 import logging, asyncio
@@ -17,6 +17,8 @@ import inspect, concurrent
 from openai import AsyncOpenAI
 from collections import defaultdict
 from litellm.router_strategy.least_busy import LeastBusyLoggingHandler
+import secrets
+
 class Router:
     """
     Example usage:
@@ -871,9 +873,9 @@ class Router:
         weights = [total_latency-latency for latency in latencies]
         # Get a weighted random item
         if sum(weights) == 0: 
-            chosen_item = random.choice(sorted_items)[0]
+            chosen_item = secrets.choice(sorted_items)[0]
         else: 
-            chosen_item = random.choices(sorted_items, weights=weights, k=1)[0][0]
+            chosen_item = secrets.SystemRandom().choices(sorted_items, weights=weights, k=1)[0][0]
         return chosen_item
 
     def set_model_list(self, model_list: list):
@@ -1164,13 +1166,13 @@ class Router:
                     min_deployment = k
             ############## No Available Deployments passed, we do a random pick #################
             if min_deployment is None: 
-                min_deployment = random.choice(healthy_deployments)
+                min_deployment = secrets.choice(healthy_deployments)
             ############## Available Deployments passed, we find the relevant item #################
             else: 
                 for m in healthy_deployments: 
                     if m["model_info"]["id"] == min_deployment:
                         return m
-                min_deployment = random.choice(healthy_deployments)
+                min_deployment = secrets.choice(healthy_deployments)
             return min_deployment 
         elif self.routing_strategy == "simple-shuffle": 
             # if users pass rpm or tpm, we do a random weighted pick - based on rpm/tpm
@@ -1184,7 +1186,7 @@ class Router:
                 weights = [rpm / total_rpm for rpm in rpms]
                 self.print_verbose(f"\n weights {weights}")
                 # Perform weighted random pick
-                selected_index = random.choices(range(len(rpms)), weights=weights)[0]
+                selected_index = secrets.SystemRandom().choices(range(len(rpms)), weights=weights)[0]
                 self.print_verbose(f"\n selected index, {selected_index}")
                 deployment = healthy_deployments[selected_index]
                 return deployment or deployment[0]
@@ -1198,13 +1200,13 @@ class Router:
                 weights = [tpm / total_tpm for tpm in tpms]
                 self.print_verbose(f"\n weights {weights}")
                 # Perform weighted random pick
-                selected_index = random.choices(range(len(tpms)), weights=weights)[0]
+                selected_index = secrets.SystemRandom().choices(range(len(tpms)), weights=weights)[0]
                 self.print_verbose(f"\n selected index, {selected_index}")
                 deployment = healthy_deployments[selected_index]
                 return deployment or deployment[0]
 
             ############## No RPM/TPM passed, we do a random pick #################
-            item = random.choice(healthy_deployments)
+            item = secrets.choice(healthy_deployments)
             return item or item[0]
         elif self.routing_strategy == "latency-based-routing": 
             returned_item = None

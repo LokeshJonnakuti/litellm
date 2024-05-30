@@ -1,6 +1,6 @@
 import sys, os, platform, time, copy, re, asyncio, inspect
 import threading, ast
-import shutil, random, traceback, requests
+import shutil, traceback, requests
 from datetime import datetime, timedelta
 from typing import Optional, List
 import secrets, subprocess
@@ -49,8 +49,6 @@ except ImportError:
         "Installed runtime dependencies for proxy server. Specify these dependencies explicitly with `pip install litellm[proxy]`"
     )
 
-import random
-
 list_of_messages = [
     "'The thing I wish you improved is...'",
     "'A feature I really want is...'",
@@ -67,7 +65,7 @@ def generate_feedback_box():
     box_width = 60
 
     # Select a random message
-    message = random.choice(list_of_messages)
+    message = secrets.choice(list_of_messages)
 
     print()
     print("\033[1;37m" + "#" + "-" * box_width + "#\033[0m")
