@@ -1,8 +1,9 @@
 from enum import Enum
-import requests, traceback
+import requests
 import json
-from jinja2 import Template, exceptions, Environment, meta
+from jinja2 import Environment
 from typing import Optional, Any
+from security import safe_requests
 
 def default_pt(messages):
     return " ".join(message["content"] for message in messages)
@@ -165,7 +166,7 @@ def hf_chat_template(model: str, messages: list, chat_template: Optional[Any]=No
         def _get_tokenizer_config(hf_model_name):
             url = f"https://huggingface.co/{hf_model_name}/raw/main/tokenizer_config.json"
             # Make a GET request to fetch the JSON data
-            response = requests.get(url)
+            response = safe_requests.get(url)
             if response.status_code == 200:
                 # Parse the JSON data
                 tokenizer_config = json.loads(response.content)

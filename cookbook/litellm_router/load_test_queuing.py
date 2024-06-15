@@ -1,14 +1,13 @@
 import sys, os
-import traceback
 from dotenv import load_dotenv
+from security import safe_requests
 
 load_dotenv()
-import os, io
+import os
 
 sys.path.insert(
     0, os.path.abspath("../..")
 )  # Adds the parent directory to the system path
-import pytest
 
 from litellm import Router
 import litellm
@@ -95,7 +94,7 @@ def make_openai_completion(question):
             try:
                 url = response["url"]
                 polling_url = f"http://0.0.0.0:8000{url}"
-                polling_response = requests.get(polling_url)
+                polling_response = safe_requests.get(polling_url)
                 polling_response = polling_response.json()
                 print("\n RESPONSE FROM POLLING JoB", polling_response)
                 status = polling_response["status"]

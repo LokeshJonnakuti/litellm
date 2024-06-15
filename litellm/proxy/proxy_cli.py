@@ -1,10 +1,12 @@
 import click
-import subprocess, traceback, json
+import subprocess, json
 import os, sys
 import random, appdirs
 from datetime import datetime
 from dotenv import load_dotenv
 import operator
+from security import safe_requests
+
 sys.path.append(os.getcwd())
 
 config_filename = "litellm.secrets"
@@ -13,7 +15,6 @@ config_dir = appdirs.user_config_dir("litellm")
 user_config_path = os.getenv("LITELLM_CONFIG_PATH", os.path.join(config_dir, config_filename))
 
 load_dotenv()
-from importlib import resources
 import shutil
 telemetry = None
 
@@ -86,12 +87,12 @@ def run_server(host, port, api_base, api_version, model, alias, add_key, headers
     global feature_telemetry
     args = locals()
     if local:
-        from proxy_server import app, save_worker_config, usage_telemetry
+        from proxy_server import save_worker_config, usage_telemetry
     else:
         try:
-            from .proxy_server import app, save_worker_config, usage_telemetry
+            from .proxy_server import save_worker_config, usage_telemetry
         except ImportError as e: 
-            from proxy_server import app, save_worker_config, usage_telemetry
+            from proxy_server import save_worker_config, usage_telemetry
     feature_telemetry = usage_telemetry
     if logs is not None:
         if logs == 0: # default to 1
@@ -133,7 +134,7 @@ def run_server(host, port, api_base, api_version, model, alias, add_key, headers
                 try: 
                     url = response["url"]
                     polling_url = f"{api_base}{url}"
-                    polling_response = requests.get(polling_url)
+                    polling_response = safe_requests.get(polling_url)
                     polling_response = polling_response.json()
                     print("\n RESPONSE FROM POLLING JOB", polling_response)
                     status = polling_response["status"]
@@ -180,7 +181,7 @@ def run_server(host, port, api_base, api_version, model, alias, add_key, headers
     if health != False:
         import requests
         print("\nLiteLLM: Health Testing models in config")
-        response = requests.get(url=f"http://{host}:{port}/health")
+        response = safe_requests.get(url=f"http://{host}:{port}/health")
         print(json.dumps(response.json(), indent=4))
         return
     if test != False:

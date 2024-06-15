@@ -11,20 +11,15 @@ import sys, re
 import dotenv, json, traceback, threading
 import subprocess, os
 import litellm, openai
-import itertools
 import random, uuid, requests
 import datetime, time
 import tiktoken
 import uuid
-import aiohttp
-import logging
 import asyncio, httpx, inspect
 import copy
 from tokenizers import Tokenizer
-from dataclasses import (
-    dataclass,
-    field,
-)  # for storing API inputs, outputs, and metadata
+from security import safe_requests
+
 encoding = tiktoken.get_encoding("cl100k_base")
 import importlib.metadata
 from .integrations.traceloop import TraceloopLogger
@@ -39,21 +34,19 @@ from .integrations.weights_biases import WeightsBiasesLogger
 from .integrations.custom_logger import CustomLogger
 from .integrations.langfuse import LangFuseLogger
 from .integrations.litedebugger import LiteDebugger
-from openai import OpenAIError as OriginalError
 from openai._models import BaseModel as OpenAIObject
 from .exceptions import (
     AuthenticationError,
     BadRequestError,
     RateLimitError,
     ServiceUnavailableError,
-    OpenAIError,
     ContextWindowExceededError,
     Timeout,
     APIConnectionError,
     APIError,
     BudgetExceededError
 )
-from typing import cast, List, Dict, Union, Optional, Literal
+from typing import List, Dict, Union, Optional, Literal
 from .caching import Cache
 from concurrent.futures import ThreadPoolExecutor
 ####### ENVIRONMENT VARIABLES ####################
@@ -2842,7 +2835,7 @@ def get_max_tokens(model: str):
 
         try:
             # Make the HTTP request to get the raw JSON file
-            response = requests.get(config_url)
+            response = safe_requests.get(config_url)
             response.raise_for_status()  # Raise an exception for bad responses (4xx or 5xx)
 
             # Parse the JSON response
@@ -2906,7 +2899,7 @@ def get_model_info(model: str):
 
         try:
             # Make the HTTP request to get the raw JSON file
-            response = requests.get(config_url)
+            response = safe_requests.get(config_url)
             response.raise_for_status()  # Raise an exception for bad responses (4xx or 5xx)
 
             # Parse the JSON response
@@ -3762,7 +3755,7 @@ def prompt_token_calculator(model, messages):
             import anthropic
         except:
             Exception("Anthropic import failed please run `pip install anthropic`")
-        from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
+        from anthropic import Anthropic
 
         anthropic = Anthropic()
         num_tokens = anthropic.count_tokens(text)

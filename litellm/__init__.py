@@ -1,9 +1,9 @@
 ### INIT VARIABLES ###
-import threading, requests
+import threading
 from typing import Callable, List, Optional, Dict, Union, Any
 from litellm.caching import Cache
-from litellm._logging import set_verbose
 import httpx
+from security import safe_requests
 
 input_callback: List[Union[str, Callable]] = []
 success_callback: List[Union[str, Callable]] = []
@@ -68,7 +68,7 @@ secret_manager_client: Optional[Any] = None # list of instantiated key managemen
 
 def get_model_cost_map(url: str):
     try:
-        with requests.get(url, timeout=5) as response:  # set a 5 second timeout for the get request
+        with safe_requests.get(url, timeout=5) as response:  # set a 5 second timeout for the get request
             response.raise_for_status()                 # Raise an exception if the request is unsuccessful
             content = response.json()
             return content
@@ -345,67 +345,5 @@ cohere_embedding_models: List = [
 bedrock_embedding_models: List = ["amazon.titan-embed-text-v1", "cohere.embed-english-v3", "cohere.embed-multilingual-v3"]
 
 all_embedding_models = open_ai_embedding_models + cohere_embedding_models + bedrock_embedding_models
-
-from .timeout import timeout
-from .utils import (
-    client,
-    exception_type,
-    get_optional_params,
-    modify_integration,
-    token_counter,
-    cost_per_token,
-    completion_cost,
-    get_litellm_params,
-    Logging,
-    acreate,
-    get_model_list,
-    get_max_tokens,
-    get_model_info,
-    register_prompt_template,
-    validate_environment,
-    check_valid_key,
-    get_llm_provider,
-    completion_with_config,
-    register_model,
-    encode, 
-    decode, 
-    _calculate_retry_after,
-    _should_retry,
-    get_secret
-)
-from .llms.huggingface_restapi import HuggingfaceConfig
-from .llms.anthropic import AnthropicConfig
-from .llms.replicate import ReplicateConfig
-from .llms.cohere import CohereConfig
-from .llms.ai21 import AI21Config
-from .llms.together_ai import TogetherAIConfig
-from .llms.palm import PalmConfig
-from .llms.nlp_cloud import NLPCloudConfig
-from .llms.aleph_alpha import AlephAlphaConfig
-from .llms.petals import PetalsConfig
-from .llms.vertex_ai import VertexAIConfig
-from .llms.sagemaker import SagemakerConfig
-from .llms.ollama import OllamaConfig
-from .llms.maritalk import MaritTalkConfig
-from .llms.bedrock import AmazonTitanConfig, AmazonAI21Config, AmazonAnthropicConfig, AmazonCohereConfig, AmazonLlamaConfig
-from .llms.openai import OpenAIConfig, OpenAITextCompletionConfig
-from .llms.azure import AzureOpenAIConfig
 from .main import *  # type: ignore
 from .integrations import *
-from .exceptions import (
-    AuthenticationError,
-    InvalidRequestError,
-    BadRequestError,
-    RateLimitError,
-    ServiceUnavailableError,
-    OpenAIError,
-    ContextWindowExceededError,
-    BudgetExceededError, 
-    APIError,
-    Timeout,
-    APIConnectionError,
-    APIResponseValidationError
-)
-from .budget_manager import BudgetManager
-from .proxy.proxy_cli import run_server
-from .router import Router

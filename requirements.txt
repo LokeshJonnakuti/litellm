@@ -19,3 +19,4 @@ psutil
 mangum
 google-generativeai 
 async_generator # for ollama 
+security==1.2.1

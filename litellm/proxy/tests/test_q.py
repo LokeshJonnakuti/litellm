@@ -2,6 +2,8 @@ import requests
 import time
 import os
 from dotenv import load_dotenv
+from security import safe_requests
+
 load_dotenv()
 
 
@@ -67,8 +69,7 @@ print("\nCreated Job, Polling Url", polling_url)
 while True:
     try:
         print("\nPolling URL", polling_url)
-        polling_response = requests.get(
-            url=polling_url,
+        polling_response = safe_requests.get(url=polling_url,
             headers={
                 "Authorization": f"Bearer {generated_key}"
             }

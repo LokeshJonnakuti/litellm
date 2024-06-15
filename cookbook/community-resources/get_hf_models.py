@@ -1,5 +1,4 @@
-import requests
-from urllib.parse import urlparse, parse_qs
+from security import safe_requests
 
 
 def get_next_url(response):
@@ -27,7 +26,7 @@ def get_models(url):
     """
     models = []
     while url:
-        response = requests.get(url)
+        response = safe_requests.get(url)
         if response.status_code != 200:
             print(f"Failed to retrieve data. Status code: {response.status_code}")
             return models
