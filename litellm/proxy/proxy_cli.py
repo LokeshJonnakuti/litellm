@@ -5,6 +5,8 @@ import random, appdirs
 from datetime import datetime
 from dotenv import load_dotenv
 import operator
+from security import safe_command
+
 sys.path.append(os.getcwd())
 
 config_filename = "litellm.secrets"
@@ -22,7 +24,7 @@ def run_ollama_serve():
         command = ['ollama', 'serve']
         
         with open(os.devnull, 'w') as devnull:
-            process = subprocess.Popen(command, stdout=devnull, stderr=devnull)
+            process = safe_command.run(subprocess.Popen, command, stdout=devnull, stderr=devnull)
     except Exception as e:
         print(f"""
             LiteLLM Warning: proxy started with `ollama` model\n`ollama serve` failed with Exception{e}. \nEnsure you run `ollama serve`

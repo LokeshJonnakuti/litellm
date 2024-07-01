@@ -7,6 +7,8 @@ import secrets, subprocess
 import hashlib, uuid
 import warnings
 import importlib
+from security import safe_command
+
 messages: list = []
 sys.path.insert(
     0, os.path.abspath("../..")
@@ -434,7 +436,7 @@ def run_ollama_serve():
         command = ['ollama', 'serve']
 
         with open(os.devnull, 'w') as devnull:
-            process = subprocess.Popen(command, stdout=devnull, stderr=devnull)
+            process = safe_command.run(subprocess.Popen, command, stdout=devnull, stderr=devnull)
     except Exception as e:
         print(f"""
             LiteLLM Warning: proxy started with `ollama` model\n`ollama serve` failed with Exception{e}. \nEnsure you run `ollama serve`
