@@ -185,7 +185,7 @@ def hf_chat_template(model: str, messages: list, chat_template: Optional[Any]=No
         raise Exception(f"Error message - {message}")
     
     # Create a template object from the template text
-    env = Environment()
+    env = Environment(autoescape=True)
     env.globals['raise_exception'] = raise_exception
     template = env.from_string(chat_template)
 
