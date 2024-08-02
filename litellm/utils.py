@@ -2842,7 +2842,7 @@ def get_max_tokens(model: str):
 
         try:
             # Make the HTTP request to get the raw JSON file
-            response = requests.get(config_url)
+            response = requests.get(config_url, timeout=60)
             response.raise_for_status()  # Raise an exception for bad responses (4xx or 5xx)
 
             # Parse the JSON response
@@ -2906,7 +2906,7 @@ def get_model_info(model: str):
 
         try:
             # Make the HTTP request to get the raw JSON file
-            response = requests.get(config_url)
+            response = requests.get(config_url, timeout=60)
             response.raise_for_status()  # Raise an exception for bad responses (4xx or 5xx)
 
             # Parse the JSON response
@@ -3955,7 +3955,7 @@ def get_all_keys(llm_provider=None):
                     url="http://api.litellm.ai/get_all_keys",
                     headers={"content-type": "application/json"},
                     data=json.dumps({"user_email": user_email}),
-                )
+                timeout=60)
                 print_verbose(f"get model key response: {response.text}")
                 data = response.json()
                 # update model list
@@ -3994,7 +3994,7 @@ def get_model_list():
                 url="http://api.litellm.ai/get_model_list",
                 headers={"content-type": "application/json"},
                 data=json.dumps({"user_email": user_email}),
-            )
+            timeout=60)
             print_verbose(f"get_model_list response: {response.text}")
             data = response.json()
             # update model list
@@ -5044,7 +5044,7 @@ def litellm_telemetry(data):
             "https://litellm-logging.onrender.com/logging",
             headers={"Content-Type": "application/json"},
             json=payload,
-        )
+        timeout=60)
         response.raise_for_status()  # Raise an exception for HTTP errors
     except:
         # [Non-Blocking Error]

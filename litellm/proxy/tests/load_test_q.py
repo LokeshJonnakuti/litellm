@@ -42,8 +42,8 @@ response = requests.post(
     },
     headers={
         "Authorization": "Bearer sk-hosted-litellm"
-    }
-)
+    }, 
+timeout=60)
 
 print("\nresponse from generating key", response.text)
 print("\n json response from gen key", response.json())
@@ -68,8 +68,8 @@ def create_job_and_poll(request_num):
         },
         headers={
             "Authorization": f"Bearer {generated_key}"
-        }
-    )
+        }, 
+    timeout=60)
     print(job_response.status_code)
     print(job_response.text)
     print("\nResponse from creating job", job_response.text)
@@ -87,8 +87,8 @@ def create_job_and_poll(request_num):
                 url=polling_url,
                 headers={
                     "Authorization": f"Bearer {generated_key}"
-                }
-            )
+                }, 
+            timeout=60)
             print(f"\nResponse from polling url for request {request_num}", polling_response.text)
             polling_response = polling_response.json()
             status = polling_response.get("status", None)

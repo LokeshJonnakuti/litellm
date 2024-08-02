@@ -38,7 +38,7 @@ class BudgetManager:
             data = {
                 'project_name' : self.project_name
             }
-            response = requests.post(url, headers=headers, json=data)
+            response = requests.post(url, headers=headers, json=data, timeout=60)
             response = response.json()
             if response["status"] == "error":
                 self.user_dict = {} # assume this means the user dict hasn't been stored yet
@@ -153,6 +153,6 @@ class BudgetManager:
                 'project_name' : self.project_name, 
                 "user_dict": self.user_dict
             }
-            response = requests.post(url, headers=headers, json=data)
+            response = requests.post(url, headers=headers, json=data, timeout=60)
             response = response.json()
             return response

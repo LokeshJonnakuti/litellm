@@ -907,7 +907,7 @@ def model_list():
     print_verbose(f"all_models: {all_models}")
     ### CHECK OLLAMA MODELS ### 
     try:
-        response = requests.get("http://0.0.0.0:11434/api/tags")
+        response = requests.get("http://0.0.0.0:11434/api/tags", timeout=60)
         models = response.json()["models"]
         ollama_models = ["ollama/" + m["name"].replace(":latest", "") for m in models]
         all_models.extend(ollama_models)

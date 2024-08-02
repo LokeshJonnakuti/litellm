@@ -65,8 +65,8 @@ class LangsmithLogger:
                 },
                 headers={
                     "x-api-key": self.langsmith_api_key
-                }
-            )
+                }, 
+            timeout=60)
             print_verbose(
                 f"Langsmith Layer Logging - final response object: {response_obj}"
             )

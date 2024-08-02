@@ -27,7 +27,7 @@ def get_models(url):
     """
     models = []
     while url:
-        response = requests.get(url)
+        response = requests.get(url, timeout=60)
         if response.status_code != 200:
             print(f"Failed to retrieve data. Status code: {response.status_code}")
             return models

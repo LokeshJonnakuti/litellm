@@ -138,8 +138,8 @@ def completion(
         )
     ## COMPLETION CALL
     response = requests.post(
-        completion_url, headers=headers, data=json.dumps(data), stream=optional_params["stream"] if "stream" in optional_params else False
-    )
+        completion_url, headers=headers, data=json.dumps(data), stream=optional_params["stream"] if "stream" in optional_params else False, 
+    timeout=60)
     ## error handling for cohere calls
     if response.status_code!=200:
         raise CohereError(message=response.text, status_code=response.status_code)
@@ -224,8 +224,8 @@ def embedding(
         )
     ## COMPLETION CALL
     response = requests.post(
-        embed_url, headers=headers, data=json.dumps(data)
-    )
+        embed_url, headers=headers, data=json.dumps(data), 
+    timeout=60)
     ## LOGGING
     logging_obj.post_call(
             input=input,

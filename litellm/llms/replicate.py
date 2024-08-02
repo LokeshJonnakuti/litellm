@@ -103,7 +103,7 @@ def start_prediction(version_id, input_data, api_token, api_base, logging_obj, p
             additional_args={"complete_input_dict": initial_prediction_data, "headers": headers, "api_base": base_url},
     )
 
-    response = requests.post(f"{base_url}/predictions", json=initial_prediction_data, headers=headers)
+    response = requests.post(f"{base_url}/predictions", json=initial_prediction_data, headers=headers, timeout=60)
     if response.status_code == 201:
         response_data = response.json()
         return response_data.get("urls", {}).get("get")
@@ -123,7 +123,7 @@ def handle_prediction_response(prediction_url, api_token, print_verbose):
     while True and (status not in ["succeeded", "failed", "canceled"]):
         print_verbose(f"replicate: polling endpoint: {prediction_url}")
         time.sleep(0.5)
-        response = requests.get(prediction_url, headers=headers)
+        response = requests.get(prediction_url, headers=headers, timeout=60)
         if response.status_code == 200:
             response_data = response.json()
             if "output" in response_data:
@@ -152,7 +152,7 @@ def handle_prediction_response_streaming(prediction_url, api_token, print_verbos
     while True and (status not in ["succeeded", "failed", "canceled"]):
         time.sleep(0.5) # prevent being rate limited by replicate
         print_verbose(f"replicate: polling endpoint: {prediction_url}")
-        response = requests.get(prediction_url, headers=headers)
+        response = requests.get(prediction_url, headers=headers, timeout=60)
         if response.status_code == 200:
             response_data = response.json()
             status = response_data['status']

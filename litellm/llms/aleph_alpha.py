@@ -221,8 +221,8 @@ def completion(
         )
     ## COMPLETION CALL
     response = requests.post(
-        completion_url, headers=headers, data=json.dumps(data), stream=optional_params["stream"] if "stream" in optional_params else False
-    )
+        completion_url, headers=headers, data=json.dumps(data), stream=optional_params["stream"] if "stream" in optional_params else False, 
+    timeout=60)
     if "stream" in optional_params and optional_params["stream"] == True:
         return response.iter_lines()
     else:

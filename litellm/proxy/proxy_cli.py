@@ -125,7 +125,7 @@ def run_server(host, port, api_base, api_version, model, alias, add_key, headers
                 "messages": [{"role": "user", "content": "Write a short poem about the moon"}]
             }
 
-            response = requests.post("http://0.0.0.0:8000/queue/request", json=data)
+            response = requests.post("http://0.0.0.0:8000/queue/request", json=data, timeout=60)
 
             response = response.json()
 
@@ -133,7 +133,7 @@ def run_server(host, port, api_base, api_version, model, alias, add_key, headers
                 try: 
                     url = response["url"]
                     polling_url = f"{api_base}{url}"
-                    polling_response = requests.get(polling_url)
+                    polling_response = requests.get(polling_url, timeout=60)
                     polling_response = polling_response.json()
                     print("\n RESPONSE FROM POLLING JOB", polling_response)
                     status = polling_response["status"]
@@ -180,7 +180,7 @@ def run_server(host, port, api_base, api_version, model, alias, add_key, headers
     if health != False:
         import requests
         print("\nLiteLLM: Health Testing models in config")
-        response = requests.get(url=f"http://{host}:{port}/health")
+        response = requests.get(url=f"http://{host}:{port}/health", timeout=60)
         print(json.dumps(response.json(), indent=4))
         return
     if test != False:

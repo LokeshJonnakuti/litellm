@@ -140,8 +140,8 @@ def completion(
         )
     ## COMPLETION CALL
     response = requests.post(
-        api_base + model + "/complete", headers=headers, data=json.dumps(data)
-    )
+        api_base + model + "/complete", headers=headers, data=json.dumps(data), 
+    timeout=60)
     if response.status_code != 200:
         raise AI21Error(
             status_code=response.status_code,

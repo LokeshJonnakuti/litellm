@@ -66,8 +66,8 @@ def completion(
         completion_url_fragment_1 + model + completion_url_fragment_2,
         headers=headers,
         data=json.dumps(data),
-        stream=True if "stream" in optional_params and optional_params["stream"] == True else False
-    )
+        stream=True if "stream" in optional_params and optional_params["stream"] == True else False, 
+    timeout=60)
     if 'text/event-stream' in response.headers['Content-Type'] or ("stream" in optional_params and optional_params["stream"] == True):
         return response.iter_lines()
     else:

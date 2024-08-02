@@ -74,7 +74,7 @@ class LiteDebugger:
                         url=self.api_url,
                         headers={"content-type": "application/json"},
                         data=json.dumps(litellm_data_obj),
-                    )
+                    timeout=60)
                 print_verbose(f"LiteDebugger: embedding api response - {response.text}")
             elif call_type == "completion":
                 litellm_data_obj = {
@@ -94,7 +94,7 @@ class LiteDebugger:
                     url=self.api_url,
                     headers={"content-type": "application/json"},
                     data=json.dumps(litellm_data_obj),
-                )
+                timeout=60)
                 print_verbose(f"LiteDebugger: completion api response - {response.text}")
         except:
             print_verbose(
@@ -131,7 +131,7 @@ class LiteDebugger:
                 url=self.api_url,
                 headers={"content-type": "application/json"},
                 data=json.dumps(litellm_data_obj),
-            )
+            timeout=60)
             print_verbose(f"LiteDebugger: api response - {response.text}")
         except:
             print_verbose(
@@ -171,7 +171,7 @@ class LiteDebugger:
                     url=self.api_url,
                     headers={"content-type": "application/json"},
                     data=json.dumps(litellm_data_obj),
-                )
+                timeout=60)
             elif call_type == "embedding":
                 litellm_data_obj = {
                     "response_time": response_time,
@@ -184,7 +184,7 @@ class LiteDebugger:
                     url=self.api_url,
                     headers={"content-type": "application/json"},
                     data=json.dumps(litellm_data_obj),
-                )
+                timeout=60)
             elif call_type == "completion" and stream == True:
                 if len(response_obj["content"]) > 0: # don't log the empty strings
                     litellm_data_obj = {
@@ -201,7 +201,7 @@ class LiteDebugger:
                         url=self.api_url,
                         headers={"content-type": "application/json"},
                         data=json.dumps(litellm_data_obj),
-                    )
+                    timeout=60)
             elif "error" in response_obj:
                 if "Unable to map your input to a model." in response_obj["error"]:
                     total_cost = 0
@@ -222,7 +222,7 @@ class LiteDebugger:
                     url=self.api_url,
                     headers={"content-type": "application/json"},
                     data=json.dumps(litellm_data_obj),
-                )
+                timeout=60)
                 print_verbose(f"LiteDebugger: api response - {response.text}")
         except:
             print_verbose(
