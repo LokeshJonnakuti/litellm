@@ -1,12 +1,12 @@
 # This file runs a health check for the LLM, used on litellm/proxy
 
 import asyncio
-import random
 from typing import Optional
 
 import litellm
 import logging
 from litellm._logging import print_verbose
+import secrets
 
 
 logger = logging.getLogger(__name__)
@@ -29,7 +29,7 @@ def _get_random_llm_message():
 
 
     return [
-        {"role": "user", "content": random.choice(messages)}
+        {"role": "user", "content": secrets.choice(messages)}
     ]
 
 

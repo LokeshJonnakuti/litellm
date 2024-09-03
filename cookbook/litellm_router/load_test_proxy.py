@@ -1,6 +1,7 @@
 import sys, os
 import traceback
 from dotenv import load_dotenv
+import secrets
 
 load_dotenv()
 import os, io
@@ -65,7 +66,6 @@ for file_path in file_paths:
 # show me a summary of requests made, success full calls, failed calls. For failed calls show me the exceptions 
 
 import concurrent.futures
-import random
 import time
 
 
@@ -106,7 +106,7 @@ futures = []
 # Make concurrent calls
 with concurrent.futures.ThreadPoolExecutor(max_workers=concurrent_calls) as executor:
     for _ in range(concurrent_calls):
-        random_question = random.choice(questions)
+        random_question = secrets.choice(questions)
         futures.append(executor.submit(make_openai_completion, random_question))
 
 # Wait for all futures to complete

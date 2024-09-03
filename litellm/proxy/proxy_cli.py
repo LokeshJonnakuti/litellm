@@ -1,10 +1,12 @@
 import click
 import subprocess, traceback, json
 import os, sys
-import random, appdirs
+import appdirs
 from datetime import datetime
 from dotenv import load_dotenv
 import operator
+import secrets
+
 sys.path.append(os.getcwd())
 
 config_filename = "litellm.secrets"
@@ -229,7 +231,7 @@ def run_server(host, port, api_base, api_version, model, alias, add_key, headers
         except:
             raise ImportError("Uvicorn needs to be imported. Run - `pip install uvicorn`")
         if port == 8000 and is_port_in_use(port):
-            port = random.randint(1024, 49152)
+            port = secrets.SystemRandom().randint(1024, 49152)
         uvicorn.run("litellm.proxy.proxy_server:app", host=host, port=port, workers=num_workers)
 
 

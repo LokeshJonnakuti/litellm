@@ -1,6 +1,8 @@
 ### What this tests ####
 import sys, os, time, inspect, asyncio
 import pytest
+import secrets
+
 sys.path.insert(0, os.path.abspath('../..'))
 
 from litellm import completion, embedding
@@ -290,12 +292,10 @@ def test_async_custom_handler():
 
 from litellm import Cache
 def test_redis_cache_completion_stream():
-    # Important Test - This tests if we can add to streaming cache, when custom callbacks are set 
-    import random
     try:
         print("\nrunning test_redis_cache_completion_stream")
         litellm.set_verbose = True
-        random_number = random.randint(1, 100000) # add a random number to ensure it's always adding / reading from cache
+        random_number = secrets.SystemRandom().randint(1, 100000) # add a random number to ensure it's always adding / reading from cache
         messages = [{"role": "user", "content": f"write a one sentence poem about: {random_number}"}]
         litellm.cache = Cache(type="redis", host=os.environ['REDIS_HOST'], port=os.environ['REDIS_PORT'], password=os.environ['REDIS_PASSWORD'])
         print("test for caching, streaming + completion")

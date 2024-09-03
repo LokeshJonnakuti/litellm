@@ -12,7 +12,7 @@ import dotenv, json, traceback, threading
 import subprocess, os
 import litellm, openai
 import itertools
-import random, uuid, requests
+import uuid, requests
 import datetime, time
 import tiktoken
 import uuid
@@ -25,6 +25,8 @@ from dataclasses import (
     dataclass,
     field,
 )  # for storing API inputs, outputs, and metadata
+import secrets
+
 encoding = tiktoken.get_encoding("cl100k_base")
 import importlib.metadata
 from .integrations.traceloop import TraceloopLogger
@@ -3869,7 +3871,7 @@ def _calculate_retry_after(remaining_retries: int, max_retries: int, response_he
     sleep_seconds = min(initial_retry_delay * pow(2.0, nb_retries), max_retry_delay)
 
     # Apply some jitter, plus-or-minus half a second.
-    jitter = 1 - 0.25 * random.random()
+    jitter = 1 - 0.25 * secrets.SystemRandom().random()
     timeout = sleep_seconds * jitter
     return timeout if timeout >= min_timeout else min_timeout
 
