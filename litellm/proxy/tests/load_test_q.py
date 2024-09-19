@@ -2,6 +2,8 @@ import requests
 import time
 import os
 from dotenv import load_dotenv
+from security import safe_requests
+
 load_dotenv()
 
 
@@ -83,7 +85,7 @@ def create_job_and_poll(request_num):
     while True:
         try:
             print(f"\nPolling URL for request {request_num}", polling_url)
-            polling_response = requests.get(
+            polling_response = safe_requests.get(
                 url=polling_url,
                 headers={
                     "Authorization": f"Bearer {generated_key}"

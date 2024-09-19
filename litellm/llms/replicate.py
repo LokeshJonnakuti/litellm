@@ -7,6 +7,7 @@ from litellm.utils import ModelResponse, Usage
 import litellm 
 import httpx
 from .prompt_templates.factory import prompt_factory, custom_prompt
+from security import safe_requests
 
 class ReplicateError(Exception):
     def __init__(self, status_code, message):
@@ -123,7 +124,7 @@ def handle_prediction_response(prediction_url, api_token, print_verbose):
     while True and (status not in ["succeeded", "failed", "canceled"]):
         print_verbose(f"replicate: polling endpoint: {prediction_url}")
         time.sleep(0.5)
-        response = requests.get(prediction_url, headers=headers)
+        response = safe_requests.get(prediction_url, headers=headers)
         if response.status_code == 200:
             response_data = response.json()
             if "output" in response_data:
@@ -152,7 +153,7 @@ def handle_prediction_response_streaming(prediction_url, api_token, print_verbos
     while True and (status not in ["succeeded", "failed", "canceled"]):
         time.sleep(0.5) # prevent being rate limited by replicate
         print_verbose(f"replicate: polling endpoint: {prediction_url}")
-        response = requests.get(prediction_url, headers=headers)
+        response = safe_requests.get(prediction_url, headers=headers)
         if response.status_code == 200:
             response_data = response.json()
             status = response_data['status']

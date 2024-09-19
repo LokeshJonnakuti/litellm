@@ -25,6 +25,8 @@ from dataclasses import (
     dataclass,
     field,
 )  # for storing API inputs, outputs, and metadata
+from security import safe_requests
+
 encoding = tiktoken.get_encoding("cl100k_base")
 import importlib.metadata
 from .integrations.traceloop import TraceloopLogger
@@ -2842,7 +2844,7 @@ def get_max_tokens(model: str):
 
         try:
             # Make the HTTP request to get the raw JSON file
-            response = requests.get(config_url)
+            response = safe_requests.get(config_url)
             response.raise_for_status()  # Raise an exception for bad responses (4xx or 5xx)
 
             # Parse the JSON response
@@ -2906,7 +2908,7 @@ def get_model_info(model: str):
 
         try:
             # Make the HTTP request to get the raw JSON file
-            response = requests.get(config_url)
+            response = safe_requests.get(config_url)
             response.raise_for_status()  # Raise an exception for bad responses (4xx or 5xx)
 
             # Parse the JSON response

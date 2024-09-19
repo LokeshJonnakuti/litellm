@@ -1,9 +1,10 @@
 ### INIT VARIABLES ###
-import threading, requests
+import threading
 from typing import Callable, List, Optional, Dict, Union, Any
 from litellm.caching import Cache
 from litellm._logging import set_verbose
 import httpx
+from security import safe_requests
 
 input_callback: List[Union[str, Callable]] = []
 success_callback: List[Union[str, Callable]] = []
@@ -68,7 +69,7 @@ secret_manager_client: Optional[Any] = None # list of instantiated key managemen
 
 def get_model_cost_map(url: str):
     try:
-        with requests.get(url, timeout=5) as response:  # set a 5 second timeout for the get request
+        with safe_requests.get(url, timeout=5) as response:  # set a 5 second timeout for the get request
             response.raise_for_status()                 # Raise an exception if the request is unsuccessful
             content = response.json()
             return content
