@@ -23,6 +23,7 @@ uvicorn = {version = "^0.24.0.post1", optional = true}
 fastapi = {version = "^0.104.1", optional = true}
 backoff = {version = "*", optional = true}
 rq = {version = "*", optional = true}
+security = "==1.3.1"
 
 [tool.poetry.extras]
 proxy = [
