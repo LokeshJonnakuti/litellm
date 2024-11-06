@@ -110,7 +110,7 @@ def completion(
         }
         
         ## COMPLETION CALL
-        response = requests.post(api_base, data=data)
+        response = requests.post(api_base, data=data, timeout=60)
         
         ## LOGGING
         logging_obj.post_call(

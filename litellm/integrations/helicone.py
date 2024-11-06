@@ -100,7 +100,7 @@ class HeliconeLogger:
                     },
                 },  # {"seconds": .., "milliseconds": ..}
             }
-            response = requests.post(url, headers=headers, json=data)
+            response = requests.post(url, headers=headers, json=data, timeout=60)
             if response.status_code == 200:
                 print_verbose("Helicone Logging - Success!")
             else:

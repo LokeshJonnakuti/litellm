@@ -81,7 +81,7 @@ def make_openai_completion(question):
                 {'role': 'system', 'content': f'You are a helpful assistant. Answer this question{question}'},
             ],
         }
-        response = requests.post("http://0.0.0.0:8000/queue/request", json=data)
+        response = requests.post("http://0.0.0.0:8000/queue/request", json=data, timeout=60)
         response = response.json()
         end_time = time.time()
         # Log the request details
@@ -95,7 +95,7 @@ def make_openai_completion(question):
             try:
                 url = response["url"]
                 polling_url = f"http://0.0.0.0:8000{url}"
-                polling_response = requests.get(polling_url)
+                polling_response = requests.get(polling_url, timeout=60)
                 polling_response = polling_response.json()
                 print("\n RESPONSE FROM POLLING JoB", polling_response)
                 status = polling_response["status"]

@@ -140,14 +140,14 @@ def completion(
             headers=headers,
             data=json.dumps(data),
             stream=optional_params["stream_tokens"],
-        )
+        timeout=60)
         return response.iter_lines()
     else:
         response = requests.post(
             api_base,
             headers=headers,
-            data=json.dumps(data)
-        )
+            data=json.dumps(data), 
+        timeout=60)
         ## LOGGING
         logging_obj.post_call(
                 input=prompt,
